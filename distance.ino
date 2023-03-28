@@ -1,4 +1,3 @@
-
 const int trigPin = 11;           //connects to the trigger pin on the distance sensor
 const int echoPin = 12;           //connects to the echo pin on the distance sensor
 
@@ -29,12 +28,19 @@ void loop() {
 
   if (distance <= 10) {                       //if the object is close
 
-    //make the RGB LED red
+    //make the RGB LED green
     analogWrite(redPin, 0);
     analogWrite(greenPin, 255);
     analogWrite(bluePin, 0);
 
   } 
+  else {                                    //if the object is far away
+
+    //no rgb
+    analogWrite(redPin, 0);
+    analogWrite(greenPin, 0);
+    analogWrite(bluePin, 0);
+  }
 
   delay(50);      //delay 50ms between each reading
 }
@@ -59,3 +65,4 @@ float getDistance()
 
   return calculatedDistance;              //send back the distance that was calculated
 }
+
