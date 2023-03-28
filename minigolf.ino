@@ -32,16 +32,6 @@ void setup()
 
 void loop() {
 
-  for(pos = 0; pos <= 90; pos = pos + 1) {
-    myServo.write(pos);
-    delay(servoDelay);
-  }
-
-  for(pos = 90; pos >= 0; pos = pos - 1) {
-    myServo.write(pos);
-    delay(servoDelay);
-  }
-
   distance = getDistance();   //variable to store the distance measured by the sensor
 
   Serial.print(distance);     //print the distance that was measured
@@ -63,7 +53,15 @@ void loop() {
     analogWrite(bluePin, 0);
   }
 
-  delay(50);      //delay 50ms between each reading
+  for(pos = 0; pos <= 90; pos = pos + 1) {
+    myServo.write(pos);
+    delay(servoDelay);
+  }
+
+  for(pos = 90; pos >= 0; pos = pos - 1) {
+    myServo.write(pos);
+    delay(servoDelay);
+  }
 }
 
 //------------------FUNCTIONS-------------------------------
@@ -86,5 +84,4 @@ float getDistance()
 
   return calculatedDistance;              //send back the distance that was calculated
 }
-
 
