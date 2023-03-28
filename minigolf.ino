@@ -53,6 +53,14 @@ void loop() {
     analogWrite(bluePin, 0);
   }
 
+  servoMovement();
+}
+
+//------------------FUNCTIONS-------------------------------
+
+// MOVES THE SERVO 90 DEGREES BACK AND FORTH TO IMITATE CRAB CLAW
+void servoMovement()
+{
   for(pos = 0; pos <= 90; pos = pos + 1) {
     myServo.write(pos);
     delay(servoDelay);
@@ -63,9 +71,6 @@ void loop() {
     delay(servoDelay);
   }
 }
-
-//------------------FUNCTIONS-------------------------------
-
 //RETURNS THE DISTANCE MEASURED BY THE HC-SR04 DISTANCE SENSOR
 float getDistance()
 {
