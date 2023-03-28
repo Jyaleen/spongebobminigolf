@@ -2,7 +2,9 @@
 const int trigPin = 11;           //connects to the trigger pin on the distance sensor
 const int echoPin = 12;           //connects to the echo pin on the distance sensor
 
+const int redPin = 3;             //pin to control the red LED inside the RGB LED
 const int greenPin = 5;           //pin to control the green LED inside the RGB LED
+const int bluePin = 6;            //pin to control the blue LED inside the RGB LED
 
 float distance = 0;               //stores the distance measured by the distance sensor
 
@@ -14,7 +16,9 @@ void setup()
   pinMode(echoPin, INPUT);    //the echo pin will measure the duration of pulses coming back from the distance sensor
 
   //set the RGB LED pins to output
+  pinMode(redPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
 }
 
 void loop() {
@@ -26,7 +30,9 @@ void loop() {
   if (distance <= 10) {                       //if the object is close
 
     //make the RGB LED red
+    analogWrite(redPin, 0);
     analogWrite(greenPin, 255);
+    analogWrite(bluePin, 0);
 
   } 
 
